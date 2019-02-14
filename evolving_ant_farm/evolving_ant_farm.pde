@@ -14,7 +14,7 @@
 
 //if food is displayed
 boolean displayFood=false;
-//if the color of the ant is displayed
+//if the color of the ant is displayed or the trail itself
 boolean displayColor=true;
 //if the ants move in eight directions or four
 boolean eightDirections=true;
@@ -161,7 +161,7 @@ void spawnFood(Tile[][] grid) {
         grid[x][y].type=tileTypes;
         //draw the food optionally
         if (displayFood) {
-          fill(100, 255, 150);
+          fill(100, 255, 150,opacity);
           noStroke();
           rect(x*zoom, y*zoom, zoom, zoom);
         }
@@ -703,6 +703,7 @@ class Ant {
         if (displayColor) {
           //draw the new tiles as the color of the ant
           fill(hue, 255, 255,opacity);
+          //fill(hue, 255, (tiles[pos.x][pos.y].type+1)*255/tileTypes,opacity);
         } else {
           //draw the new tiles as their real color
           fill(tiles[pos.x][pos.y].type*255/tileTypes,opacity);
