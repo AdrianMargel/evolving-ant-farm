@@ -12,6 +12,7 @@ This is a test in artificial life and evolutionary algorithms meant to mimic the
 The code was written fall 2018.
 
 ## more images:
+![huge ant farm](https://i.imgur.com/ph8sXBc.png)
 ![circle ant farm](https://i.imgur.com/ejpURdr.png)
 ![orange ant farm](https://i.imgur.com/XB6Gb0x.png)
 ![basic ant farm 1](https://i.imgur.com/OzQ3X7P.png)
