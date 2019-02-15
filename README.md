@@ -13,7 +13,8 @@ The code was written fall 2018.
 
 ## more images:
 ![huge ant farm](https://i.imgur.com/ph8sXBc.png)
+![huge ant farm](https://i.imgur.com/jLuip2v.png)
 ![circle ant farm](https://i.imgur.com/ejpURdr.png)
 ![orange ant farm](https://i.imgur.com/XB6Gb0x.png)
-![basic ant farm 1](https://i.imgur.com/OzQ3X7P.png)
-![basic ant farm 2](https://i.imgur.com/s56FlL4.png)
+![basic ant farm](https://i.imgur.com/OzQ3X7P.png)
+![basic ant farm](https://i.imgur.com/s56FlL4.png)
