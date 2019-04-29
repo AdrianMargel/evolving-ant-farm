@@ -294,7 +294,7 @@ class Mutator {
         high-=mutateMutateHigh.getValue();
       }
     }
-    high=max(high, 0);
+    high=max(high, 0.001);
 
     if ((int)random(0, 2)==1) {
       spread+=mutateMutateSpread.getValue();
