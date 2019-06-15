@@ -54,7 +54,7 @@ void setup() {
   colorMode(HSB);
 
   //setup map to size of screen
-  tiles=new Tile[width][height];
+  tiles=new Tile[(int)(width/zoom)][(int)(height/zoom)];
   for (int x=0; x<tiles.length; x++) {
     for (int y=0; y<tiles[x].length; y++) {
       tiles[x][y]=new Tile(0, new Vector(x, y));
@@ -68,13 +68,14 @@ void setup() {
   }
 
   //draw starting tiles
-  for (int x=0; x<tiles.length; x++) {
+  background(0);
+  /*for (int x=0; x<tiles.length; x++) {
     for (int y=0; y<tiles[x].length; y++) {
       fill(tiles[x][y].type*255/tileTypes);
       noStroke();
-      rect(x*zoom, y*zoom, zoom, zoom);
+      rect(x*zoom, y*zoom, max(zoom,1), max(zoom,1));
     }
-  }
+  }*/
 
   //set framerate really high so it'll max out
   frameRate(300);
@@ -86,7 +87,7 @@ void draw() {
     noStroke();
     rect(0,0,width,height);
   }
-  //try to spawn up to 200 new food tiles
+  //try to spawn up to a number of new food tiles
   for (int i=0; i<200; i++) {
     spawnFood(tiles);
   }
@@ -129,10 +130,10 @@ void spawnFood(Tile[][] grid) {
       y=(int)random(0, tiles[0].length);
     } else {
       //spawning food in a circle
-      float d=random(0, 400);
+      float d=random(0, width/zoom/2);
       float a=random(0, TWO_PI);
-      x=(int)(cos(a)*d)+400;
-      y=(int)(sin(a)*d)+400;
+      x=(int)(cos(a)*d)+(int)(width/zoom/2);
+      y=(int)(sin(a)*d)+(int)(width/zoom/2);
     }
 
     //if food somehow spawns out of bounds loop it around back into bounds
@@ -155,7 +156,7 @@ void spawnFood(Tile[][] grid) {
     if (multiBiome) {
       //rules vary over space creating multiple biomes
       int surr=getSurround(tiles, 0, new Vector(x, y), 4);
-      if (grid[x][y].type==0&&(surr>x/10&&surr<x/10+y/10)) {
+      if (grid[x][y].type==0&&(surr/zoom>x/10&&surr/zoom<x/10+y/10)) {
         //if the food can spawn then replace the tile with food
         grid[x][y].resetTile();
         grid[x][y].type=tileTypes;
@@ -163,7 +164,7 @@ void spawnFood(Tile[][] grid) {
         if (displayFood) {
           fill(100, 255, 150,opacity);
           noStroke();
-          rect(x*zoom, y*zoom, zoom, zoom);
+          rect(x*zoom, y*zoom, max(zoom,1), max(zoom,1));
         }
         //set flag that the tile was placed
         placed=true;
@@ -179,7 +180,7 @@ void spawnFood(Tile[][] grid) {
         if (displayFood) {
           fill(100, 255, 150);
           noStroke();
-          rect(x*zoom, y*zoom, zoom, zoom);
+          rect(x*zoom, y*zoom, max(zoom,1), max(zoom,1));
         }
         //set flag that the tile was placed
         placed=true;
@@ -726,7 +727,7 @@ class Ant {
           fill(tiles[pos.x][pos.y].type*255/tileTypes,opacity);
         }
         noStroke();
-        rect(pos.x*zoom, pos.y*zoom, zoom, zoom);
+        rect(pos.x*zoom, pos.y*zoom, max(zoom,1), max(zoom,1));
 
         break;
       }
@@ -791,7 +792,7 @@ class Ant {
       //re-draw the food tile as empty
       fill(0,opacity);
       noStroke();
-      rect(pos.x*zoom, pos.y*zoom, zoom, zoom);
+      rect(pos.x*zoom, pos.y*zoom, max(zoom,1), max(zoom,1));
     }
 
     //cause ant to age
@@ -847,7 +848,7 @@ class Ant {
         t.resetTile();
         if(redrawDead){
           fill(t.type*255/tileTypes);
-          rect(t.pos.x*zoom, t.pos.y*zoom, zoom, zoom);
+          rect(t.pos.x*zoom, t.pos.y*zoom, max(zoom,1), max(zoom,1));
         }
       }
     }
