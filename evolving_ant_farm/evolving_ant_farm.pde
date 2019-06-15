@@ -88,7 +88,7 @@ void draw() {
     rect(0,0,width,height);
   }
   //try to spawn up to a number of new food tiles
-  for (int i=0; i<200; i++) {
+  for (int i=0; i<100; i++) {
     spawnFood(tiles);
   }
 
