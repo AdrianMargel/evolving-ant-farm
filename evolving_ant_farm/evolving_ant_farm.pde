@@ -351,18 +351,35 @@ class Find {
   boolean matches(Tile[][] grid, Vector p, int direction) {
     int xAdd=0;
     int yAdd=0;
-    if (direction==0) {
-      xAdd=pos.x;
-      yAdd=pos.y;
-    } else if (direction==1) {
-      xAdd=-pos.y;
-      yAdd=pos.x;
-    } else if (direction==2) {
-      xAdd=-pos.x;
-      yAdd=-pos.y;
-    } else if (direction==3) {
-      xAdd=pos.y;
-      yAdd=-pos.x;
+    if(eightDirections){
+      direction/=2;
+      if (direction==0) {
+        xAdd=pos.x;
+        yAdd=pos.y;
+      } else if (direction==1) {
+        xAdd=-pos.y;
+        yAdd=pos.x;
+      } else if (direction==2) {
+        xAdd=-pos.x;
+        yAdd=-pos.y;
+      } else if (direction==3) {
+        xAdd=pos.y;
+        yAdd=-pos.x;
+      }
+    }else{
+      if (direction==0) {
+        xAdd=pos.x;
+        yAdd=pos.y;
+      } else if (direction==1) {
+        xAdd=-pos.y;
+        yAdd=pos.x;
+      } else if (direction==2) {
+        xAdd=-pos.x;
+        yAdd=-pos.y;
+      } else if (direction==3) {
+        xAdd=pos.y;
+        yAdd=-pos.x;
+      }
     }
 
     int x=p.x+xAdd;
